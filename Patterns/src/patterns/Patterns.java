@@ -31,13 +31,44 @@ class NormalUser extends User{
     
 }
 
+
 class Creator extends User{
+    
+    private Channel[] channels;
     
     Creator(String n, String p)
     {
         super(n,p);
     }
     
+}
+
+
+class Channel{
+
+    private String ChannelName;
+    private int SubsCount;
+    private Video[] videos;
+    
+    Channel(String name,int count){
+        this.ChannelName = name;
+        this.SubsCount = count;
+    }
+    
+}
+
+
+class Video{
+    
+    private String videoname;
+    private String desc;
+    private String comments;
+    
+    Video(String vn, String d, String c){
+        this.videoname = vn;
+        this.desc = d;
+        this.comments = c;
+    }
 }
 
 public class Patterns {
