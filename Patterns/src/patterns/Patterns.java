@@ -10,10 +10,27 @@ package patterns;
  * @author karanrajmokan
  */
 
+import java.util.ArrayList;
+
+
+class Admin{
+    
+    private int id;
+    private String name;
+    
+    Admin(int id,String name)
+    {
+        this.id = id;
+        this.name = name;
+    }
+    
+}
+
+
 
 class User{
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
     
     User(String uname, String pass)
     {
@@ -31,10 +48,9 @@ class NormalUser extends User{
     
 }
 
-
 class Creator extends User{
     
-    private Channel[] channels;
+    private ArrayList<Channel> channels = new ArrayList<Channel>();
     
     Creator(String n, String p)
     {
@@ -46,9 +62,9 @@ class Creator extends User{
 
 class Channel{
 
-    private String ChannelName;
-    private int SubsCount;
-    private Video[] videos;
+    private final String ChannelName;
+    private final int SubsCount;
+    ArrayList<Video> videos = new ArrayList<Video>();
     
     Channel(String name,int count){
         this.ChannelName = name;
@@ -58,17 +74,114 @@ class Channel{
 }
 
 
+class Add{
+    
+    private final String name;
+    private final int length;
+    private final int payPerClick;
+    private int noofClicks,revenue;
+    
+    Add(String n, int l, int p)
+    {
+        this.name = n;
+        this.length = l;
+        this.payPerClick = p;
+        this.noofClicks = 0;
+        this.revenue = 0;
+    }
+    
+    public void clicks()
+    {
+        this.noofClicks+=1;
+    }
+ 
+    public int getRevenue()
+    {
+        this.revenue = this.payPerClick*this.noofClicks;
+        return this.revenue;
+    }
+    
+}
+
+
+class SkippableAdd extends Add{
+    
+    
+    SkippableAdd(String n, int l, int p)
+    {
+        super(n,l,p);
+    }
+    
+}
+
+class NonSkippableAdd extends Add{
+    
+    NonSkippableAdd(String n, int l, int p)
+    {
+        super(n,l,p);
+    }
+}
+
+class Card extends Add{
+    
+    Card(String n, int l, int p)
+    {
+        super(n,l,p);
+    }
+}
+
+class Banner extends Add{
+
+    Banner(String n,int l,int p)
+    {
+        super(n,l,p);
+    }
+}
+
+
 class Video{
     
-    private String videoname;
-    private String desc;
-    private String comments;
+    private final String videoname;
+    private final String desc;
+    private final String comments;
+    private int likes;
+    private int dislikes;
+    private ArrayList<Add> adds = new ArrayList<Add>();
     
     Video(String vn, String d, String c){
         this.videoname = vn;
         this.desc = d;
         this.comments = c;
     }
+    
+    public int getLikes()
+    {
+        return this.likes;
+    }
+    
+    public int getDislikes()
+    {
+        return this.dislikes;
+    }
+}
+
+
+class Feedback{
+    
+    private int likes;
+    private String comments;
+    private ArrayList<Creator> creators = new ArrayList<Creator>();
+    
+    Feedback(Creator c)
+    {
+        this.creators.add(c);
+    }
+    
+    void getFeebackInfo()
+    {
+        
+    }
+    
 }
 
 public class Patterns {
