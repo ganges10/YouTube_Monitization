@@ -17,11 +17,26 @@ class Admin{
     
     private int id;
     private String name;
+    private ArrayList<Creator> creators = new ArrayList<Creator>();
     
     Admin(int id,String name)
     {
         this.id = id;
         this.name = name;
+    }
+    
+    public void analaysePerformance()
+    {
+        
+    }
+    
+    public void troubleShoot()
+    {
+        
+    }
+    
+    public void manageData(){
+        
     }
     
 }
